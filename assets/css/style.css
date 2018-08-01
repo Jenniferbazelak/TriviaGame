@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#container{
+    background: gray;
+    color:black;
+    font-size: 16px;
+    width: 100%;
+}
+
+.display-4{
+    color: #cc5500;
+    
+}
+
+/* .start{
+    margin-left: 50%;
+    margin-right: 50%;
+    height: 50px;
+}
+.jumbotron{
+    background: white;
+}
+.buttons{
+    margin-left: 50%;
+    margin-right: 50%;
+    height: 50px;
+}
+#question{
+    margin-left: 50%;
+    margin-right: 50%;
+    height: 50px;
+} */
