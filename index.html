@@ -9,49 +9,61 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Monoton|Orbitron:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Monoton|Orbitron:700" rel="stylesheet">
 </head>
 
 <body>
     <div class="jumbotron">
         <h1 class="display-4">Longhorn Trivia</h1>
-        <img class= "longhorn"src="assets/images/longhorn.png" alt=longhorn>
+        <img class="longhorn" src="assets/images/longhorn.png" alt=longhorn>
         <p class="lead">Press the start button to begin the trivia game.</p>
         <hr class="my-4">
     </div>
     <div id="container"></div>
     <div class="row">
-            <div class="col-md-12" style="margin-bottom:20;">
-                    <button type="button" class="btn btn-secondary" id="start">Start Trivia</button>
-                        <ul class="list-group">
-                                <li class="list-group-item active" id="time" style="background-color:#cc5500;">Time Left:</li>
-                                <li class="list-group-item" id="counter"></li>
-                        </ul>
-                    </div>
+        <div class="col-md-4" style="margin-bottom:20;">
+            <button type="button" class="btn btn-secondary" id="start">Start Trivia</button>
+        </div>
+        <div class="col-md-4" style="margin-bottom:20;">
+                <li class="list-group-item active" id="time" style="background-color:#cc5500;">Time Left:</li>
+                <li class="list-group-item" id="counter"></li>
+            </ul>
+        </div>
+        <div class="col-md-4" id="results" style="margin-bottom:20;">
+            <ul class="list-group">
+                <li class="list-group-item active" id="correct" style="background-color:#cc5500;">Correct Answers:</li>
+                <li class="list-group-item" id="incorrect">Incorrect Answers:</li>
+            </ul>
+        </div>
     </div>
     <div class="row">
-            <div class="col-md-6">
-                    <h1 id="question"></h1> <br>
-                    <section id=button-group>
-                    <button id="A" type="button" class="btn btn-secondary button"></button><br>
-                    <button id="B" type="button" class="btn btn-secondary button"></button><br>
-                    <button id="C" type="button" class="btn btn-secondary button"></button><br>
-                    <button id="D" type="button" class="btn btn-secondary button"></button><br>
-                </section>
+        <div class="col-md-6">
+            <h1 id="question"></h1>
+            <br>
+            <section id=button-group>
+                <button id="A" type="button" class="btn btn-secondary button"></button>
+                <br>
+                <button id="B" type="button" class="btn btn-secondary button"></button>
+                <br>
+                <button id="C" type="button" class="btn btn-secondary button"></button>
+                <br>
+                <button id="D" type="button" class="btn btn-secondary button"></button>
+                <br>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 25rem;">
+                <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
                 </div>
-                <div class="col-md-6">
-                        <div class="card" style="width: 25rem;">
-                                <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                <div class="card-body">
-                                  <h5 class="card-title"></h5>
-                                </div>
-                              </div>
-                </div>
-    </div>
-    
+            </div>
+        </div>
     </div>
 
-   
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
