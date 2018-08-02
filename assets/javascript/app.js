@@ -93,7 +93,7 @@ $(document).ready(function () {
         function countdown() {
             if (counter >1){
                 counter--;
-                $("#counter").text(counter);
+                $("#counter").text(counter + "seconds");
             }
             else {
                 alert("Time is up!");
@@ -116,6 +116,12 @@ $(document).ready(function () {
         $(".button").hide();
 
     }
+    function nextQuestion(){
+        displayQuestion();
+        displayAnswers();
+        counter=20;
+        timer();
+    }
 
 
 
@@ -131,29 +137,26 @@ $(document).ready(function () {
 
     $(".button").on("click", function () {
         userGuess = $(this).attr("id");
-        console.log("User Guess: :" + userGuess);
-        if (count === trivia.length) {
+        console.log("User Guess: " + userGuess);
+        if (count === trivia.length + 1) {
             endGame();
         }
         else if (userGuess === trivia[count].answer) {
             alert("Correct!");
             correctAnswers++;
             count++;
-            displayQuestion();
-            displayAnswers();
-            counter=20;
+            nextQuestion();
+            
         }
-        else if (!userGuess === trivia[count].answer) {
+        else if (userGuess !== trivia[count].answer) {
             alert("Incorrect! The correct answer was " + trivia[count].answer + ".");
             incorrectAnswers++;
             count++;
-            displayQuestion();
-            displayAnswers();
-            counter=20;
+            nextQuestion();
         }
-        else if (counter === 0){
-            timesUp();
-        }
+        // else if (counter === 0){
+        //     timesUp();
+        // }
 
         
 
