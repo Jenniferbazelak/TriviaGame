@@ -14,24 +14,48 @@
 
 .display-4{
     color: #cc5500;
+    font-family: "Monoton", cursive;
     
 }
+.longhorn{
+    float: right;
+    width: 50%;
+    height: 170px;
+    position: relative;
+    top: -123px;
+}
 
-/* .start{
-    margin-left: 50%;
-    margin-right: 50%;
-    height: 50px;
-}
-.jumbotron{
-    background: white;
-}
 .buttons{
-    margin-left: 50%;
-    margin-right: 50%;
-    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+   
 }
+
+p.lead{
+    margin-left: 5%;
+}
+
+h1{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.btn-secondary{
+    margin: 6px;
+}
+
+#button-group{
+    margin-left: 31%;
+}
+
 #question{
-    margin-left: 50%;
-    margin-right: 50%;
-    height: 50px;
+    text-align: center;
+}
+.card{
+    margin-left: 6%;
+}
+
+
+
+/* div.jumbotron{
+    height: 237px;
 } */
