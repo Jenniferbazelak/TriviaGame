@@ -3,8 +3,9 @@ var index = 0;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var userGuess = 0;
-var counter = 20;
+// var counter = 20;
 var clock;
+var anseringQuestion= true;
 
 $(document).ready(function () {
     // set variables
@@ -79,7 +80,6 @@ $(document).ready(function () {
     function startTrivia() {
         $("#start").hide();
         displayQuestion();
-        displayAnswers();
         $(".button").show();
         $("#question").show();
         $("#time").show();
@@ -87,31 +87,42 @@ $(document).ready(function () {
         $("#counter").show();
         $(".card").show();
         $(".card-img-top").attr("src",trivia[index].picture)
-        timer();
+        timer(10);
     }
 
     function displayQuestion() {
+        if (index < trivia.length) {
         $("#question").text(trivia[index].question)
-    };
-
-    function displayAnswers() {
         $("#A").text(trivia[index].choices[0]);
         $("#B").text(trivia[index].choices[1]);
         $("#C").text(trivia[index].choices[2]);
         $("#D").text(trivia[index].choices[3]);
+        $(".card-img-top").attr("src",trivia[index].picture)
+        $(".card-title").hide();
+        timer(10);
+        answeringQuestion= true;
+        }
+        else{
+            //gameover hide everything and show results
+        }
     };
 
-    function timer() {
-        clock= setInterval(countdown, 2000);
+    function timer(x) {
+        var counter = x;
+        clock= setInterval(countdown, 1000);
         function countdown() {
-            if (counter >0){
-                counter--;
-                $("#counter").text(counter + "seconds");
-            }
-            else {
-                //time is up in card for a few seconds
-
+            counter--;
+            $("#counter").text(counter + "seconds");
+            if (counter === 0){
+                if(answeringQuestion= true)
+                {
+                    clearInterval(clock);
+                    timesUp();
+                }
+            else{
                 clearInterval(clock);
+                displayQuestion();
+            }
             }
     }}
 
@@ -123,15 +134,34 @@ $(document).ready(function () {
         ("#start").show()
     }
 
-    
-    function nextQuestion(){
+    function timesUp(){
+        $("#question").hide();
+        $(".card-title").text("Time's up!")
+        $(".card-title").show();
+        timer(5);
+        answeringQuestion= false;
         displayQuestion();
-        displayAnswers();
-        $(".card-img-top").attr("src",trivia[index].picture)
-        $(".card-title").hide();
-        counter=20 + "seconds";
-        timer();
     }
+
+    function answerCorrect(){
+        $("#question").hide();
+        $(".card-title").text("Correct!")
+        $(".card-title").show();
+        timer(5);
+        answeringQuestion= false;
+        displayQuestion();
+    }
+    function answerIncorrect(){
+        $("#question").hide();
+
+        $(".card-title").text("Incorrect!")
+        $(".card-title").show();
+        timer(5);
+        answeringQuestion= false;
+        displayQuestions();
+
+    }
+    
 
 
 
@@ -149,27 +179,17 @@ $(document).ready(function () {
     $(".button").on("click", function () {
         userGuess = $(this).attr("id");
         console.log("User Guess: " + userGuess);
-        if (counter === 0){
-            //timesUp();
-        }
-        else if (index === trivia.length + 1) {
-            endGame();
-        }
-        else if (userGuess === trivia[index].answer) {
-            $(".card-title").text("CORRECT!")
-            $(".card-title").show();
-            //need to hide question and let the "correct" message linger for a bit
+         if (userGuess === trivia[index].answer) {
+            answerCorrect();
+            clearInterval(clock);
             correctAnswers++;
             index++;
-            nextQuestion();
-            
         }
         else if (userGuess !== trivia[index].answer) {
-            $("#card-title").text("INCORRECT! The correct answer was " + trivia[index].answer + ".");
-            $(".card-title").show();
+            answerIncorrect();
             incorrectAnswers++;
             index++;
-            nextQuestion();
+            clearInterval(clock);  
         }
         
 
