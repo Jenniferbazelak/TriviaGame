@@ -100,8 +100,7 @@ $(document).ready(function () {
             $("#D").text(trivia[index].choices[3]);
             $(".card-img-top").attr("src", trivia[index].picture)
             $(".card-title").hide();
-            timer(10);
-            
+            timer(10); 
         }
         else {
             $("#question").hide();
@@ -117,7 +116,7 @@ $(document).ready(function () {
 
 function timer(x) {
     var counter = x;
-    $("#counter").text(counter + "seconds");
+    $("#counter").text(x + "seconds");
     clock = setInterval(countdown, 1000);
     function countdown() {
         counter--;
@@ -131,6 +130,7 @@ function timer(x) {
                 displayQuestion();
             }
         }
+        $("#counter").text(counter + "seconds");
     }
 }
 
