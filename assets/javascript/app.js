@@ -181,14 +181,13 @@ $("#start").on("click", function () {
 $(".button").on("click", function () {
     userGuess = $(this).attr("id");
     console.log("User Guess: " + userGuess);
+    clearInterval(clock);
     if (userGuess === trivia[index].answer) {
-        clearInterval(clock);
         correctAnswers++;
         index++;
         answerCorrect();
     }
     else if (userGuess !== trivia[index].answer) {
-        clearInterval(clock);
         incorrectAnswers++;
         index++;
         answerIncorrect();

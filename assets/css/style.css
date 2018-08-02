@@ -63,10 +63,14 @@ h1{
     text-align: center;
 }
 
-.start{
-    width: 100%;
+#start{
+    margin-left:40%;
+    margin-right:25%;
 }
 
+.col-md-4{
+    height: 75px;
+}
 
 
 
