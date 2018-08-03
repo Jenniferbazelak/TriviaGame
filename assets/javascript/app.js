@@ -3,9 +3,9 @@ var index = 0;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var userGuess = 0;
-var counter;
+var counter =10;
 var clock;
-var anseringQuestion = true;
+var answeringQuestion = true;
 
 $(document).ready(function () {
     // set variables
@@ -78,7 +78,8 @@ $(document).ready(function () {
 
     //define functions
     function startTrivia() {
-        $("#start").hide();
+        $(".start").hide();
+        $("#results").hide();
         displayQuestion();
         $(".button").show();
         $("#question").show();
@@ -86,14 +87,18 @@ $(document).ready(function () {
         $("#counter").text(counter + "seconds");
         $("#counter").show();
         $(".card").show();
-        $(".card-img-top").attr("src", trivia[index].picture)
-        timer(10);
+        $(".card-img-top").attr("src", trivia[index].picture);
     }
 
     function displayQuestion() {
         if (index < trivia.length) {
+            $(".button").show();
+            $("#question").show();
+            $("#time").show();
+            $(".card").show();
+            $("#counter").text(counter + "seconds");
             answeringQuestion = true;
-            $("#question").text(trivia[index].question)
+            $("#question").text(trivia[index].question);
             $("#A").text(trivia[index].choices[0]);
             $("#B").text(trivia[index].choices[1]);
             $("#C").text(trivia[index].choices[2]);
@@ -103,14 +108,17 @@ $(document).ready(function () {
             timer(10); 
         }
         else {
+            index = 0;
             $("#question").hide();
             $(".button").hide();
             $(".card").hide();
-            ("#correct").text(correctAnswers);
-            ("#incorrect").text(incorrectAnswers);
+            $("#time").hide();
+            $("#counter").hide();
+            $("#correct").text("Correct Answers: " + correctAnswers);
+            $("#incorrect").text("Incorrect Answers: " +incorrectAnswers);
             $("#results").show();
-            ("#start").text("Replay");
-            ("#start").show();
+            $(".start").text("Replay");
+            $(".start").show();
         }
 };
 
@@ -121,18 +129,20 @@ function timer(x) {
     function countdown() {
         counter--;
         if (counter === 0) {
-            if (answeringQuestion) {
                 clearInterval(clock);
-                timesUp(); //showIncorrecPage
+                timesUp();
+                setTimeout(function(){
+                    index++;
+                    displayQuestion();
+                },5000);
+               
             }
-            else {
-                clearInterval(clock);
-                displayQuestion();
-            }
-        }
+           
         $("#counter").text(counter + "seconds");
+
+        }
     }
-}
+
 
 
 
@@ -141,8 +151,6 @@ function timesUp() {
     $(".button").hide();
     $(".card-title").text("Time's up!")
     $(".card-title").show();
-    timer(5);
-    answeringQuestion = false;
 }
 
 function answerCorrect() {
@@ -150,17 +158,20 @@ function answerCorrect() {
     $(".button").hide();
     $(".card-title").text("Correct!")
     $(".card-title").show();
-    answeringQuestion = false;
-    timer(5);
+    setTimeout(function(){
+        displayQuestion();
+    },2000);
+    
 }
 function answerIncorrect() {
     $("#question").hide();
     $(".button").hide();
     $(".card-title").text("Incorrect!")
     $(".card-title").show();
-    answeringQuestion = false;
-    timer(5);
-    displayQuestion();
+    setTimeout(function(){
+        displayQuestion();
+    },2000);
+    
 }
 
 
@@ -171,7 +182,8 @@ $("#time").hide();
 $("#counter").hide();
 $("#question").hide();
 $(".button").hide();
-$("#start").on("click", function () {
+
+$(".start").on("click", function () {
     console.log("start game")
     startTrivia();
 });

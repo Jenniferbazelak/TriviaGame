@@ -19,7 +19,7 @@
 }
 .longhorn{
     float: right;
-    width: 50%;
+    width: 36%;
     height: 170px;
     position: relative;
     top: -123px;
@@ -72,5 +72,74 @@ h1{
     height: 75px;
 }
 
+.card-title{
+    text-align: center;
+
+}
+
+.main-content{
+    margin-bottom:60px;
+}
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -80px;
+}
+.push{
+    height:50px;
+}
+
+footer{
+    background: #cc5500;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0%;
+    border-top: 10px solid gray;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right:0;
+}
+
+
+
+  
+  @media screen and (max-width: 768px) {
+    .longhorn{
+        width: 36%;
+        position: relative;
+        top: -123px;
+       }
+
+    .list-group-item{
+        width: 160px;
+    }
+    
+       
+    
+}
+
+  @media screen and (max-width: 640px) {
+   .longhorn{ width: 36%;
+    height: 84px;
+    position: relative;
+    top: -76px;
+   }
+   .list-group-item{
+    width: 150px;
+    height:68px;
+    bottom: 94px;
+}
+
+.start{
+    position: relative;
+    left: 25px;
+    bottom: 86px;
+}
+.card{
+    margin:0%;
+    width: 18rem;
+}
+    
+}
 
 
