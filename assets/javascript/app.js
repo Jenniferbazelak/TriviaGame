@@ -78,6 +78,8 @@ $(document).ready(function () {
 
     //define functions
     function startTrivia() {
+        correctAnswers = 0;
+        incorrectAnswers = 0;
         $(".start").hide();
         $("#results").hide();
         displayQuestion();
